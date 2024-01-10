@@ -18,6 +18,7 @@ defmodule LibraryWeb.Router do
     pipe_through :browser
 
     resources "/publishers", PublisherController
+    resources "/books", BookController
     get "/", PageController, :home
   end
 
