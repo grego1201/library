@@ -1,0 +1,15 @@
+<.header>
+  Publisher <%= @publisher.id %>
+  <:subtitle>This is a publisher record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/publishers/#{@publisher}/edit"}>
+      <.button>Edit publisher</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @publisher.name %></:item>
+</.list>
+
+<.back navigate={~p"/publishers"}>Back to publishers</.back>

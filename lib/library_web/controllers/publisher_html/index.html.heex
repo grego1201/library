@@ -1,0 +1,23 @@
+<.header>
+  Listing Publishers
+  <:actions>
+    <.link href={~p"/publishers/new"}>
+      <.button>New Publisher</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="publishers" rows={@publishers} row_click={&JS.navigate(~p"/publishers/#{&1}")}>
+  <:col :let={publisher} label="Name"><%= publisher.name %></:col>
+  <:action :let={publisher}>
+    <div class="sr-only">
+      <.link navigate={~p"/publishers/#{publisher}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/publishers/#{publisher}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={publisher}>
+    <.link href={~p"/publishers/#{publisher}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

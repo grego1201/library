@@ -1,0 +1,8 @@
+<.header>
+  Edit Publisher <%= @publisher.id %>
+  <:subtitle>Use this form to manage publisher records in your database.</:subtitle>
+</.header>
+
+<.publisher_form changeset={@changeset} action={~p"/publishers/#{@publisher}"} />
+
+<.back navigate={~p"/publishers"}>Back to publishers</.back>
