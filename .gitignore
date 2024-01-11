@@ -35,5 +35,5 @@ library-*.tar
 npm-debug.log
 /assets/node_modules/
 
-# Ignore media folder
-media/*
+# Ignore cover images
+piv/static/cover_images/*

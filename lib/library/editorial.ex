@@ -213,7 +213,7 @@ defmodule Library.Editorial do
   """
   def save_cover(%Plug.Upload{} = upload, isbn) do
     extension = Path.extname(upload.filename)
-    new_path = "media/#{isbn}-cover#{extension}"
+    new_path = "priv/static/images/cover_images/#{isbn}-cover#{extension}"
     case File.cp(upload.path, new_path) do
       :ok -> {:ok, new_path}
       {:error, reason} -> {:error, reason}
