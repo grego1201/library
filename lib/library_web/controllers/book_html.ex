@@ -21,7 +21,7 @@ defmodule LibraryWeb.BookHTML do
       do: [key: publisher.name, value: publisher.id, selected: publisher.id in existing_ids]
   end
 
-  def cover_path(%Library.Editorial.Book{} = book) do
+  def cover_path(%Library.Books.Book{} = book) do
     String.replace(book.cover_image_path, "priv/static", "")
   end
 end

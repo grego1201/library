@@ -2,7 +2,7 @@ defmodule Library.Editorial.Publisher do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Library.Editorial.Book
+  alias Library.Books.Book
 
   schema "publishers" do
     field :name, :string

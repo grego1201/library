@@ -36,4 +36,4 @@ npm-debug.log
 /assets/node_modules/
 
 # Ignore cover images
-piv/static/cover_images/*
+priv/static/images/cover_images/*

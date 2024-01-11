@@ -58,7 +58,7 @@ defmodule Library.EditorialTest do
   end
 
   describe "books" do
-    alias Library.Editorial.Book
+    alias Library.Books.Book
 
     import Library.EditorialFixtures
 
