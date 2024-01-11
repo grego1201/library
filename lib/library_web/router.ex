@@ -18,11 +18,11 @@ defmodule LibraryWeb.Router do
   end
 
   scope "/", LibraryWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
+    get "/", PageController, :home
 
     resources "/publishers", PublisherController
     resources "/books", BookController
-    get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
