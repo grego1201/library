@@ -5,6 +5,7 @@
   <.input field={f[:title]} type="text" label="Title" />
   <.input field={f[:isbn]} type="text" label="Isbn" />
   <.input field={f[:photo]} type="file" label="Photo" />
+  <.input field={f[:publisher_id]} type="select" options={publisher_opts(@changeset)} />
   <:actions>
     <.button>Save Book</.button>
   </:actions>

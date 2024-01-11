@@ -12,4 +12,26 @@
   <:item title="Name"><%= @publisher.name %></:item>
 </.list>
 
+<br />
+<br />
+<br />
+
+<h2> Books </h2>
+<.table id="books" rows={Library.Editorial.list_books_from_publisher(@publisher.id)} row_click={&JS.navigate(~p"/books/#{&1}")}>
+  <:col :let={book} label="Title"><%= book.title %></:col>
+  <:col :let={book} label="Isbn"><%= book.isbn %></:col>
+  <:col :let={book} label="Cover image path"><%= book.cover_image_path %></:col>
+  <:action :let={book}>
+    <div class="sr-only">
+      <.link navigate={~p"/books/#{book}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/books/#{book}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={book}>
+    <.link href={~p"/books/#{book}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
+
 <.back navigate={~p"/publishers"}>Back to publishers</.back>

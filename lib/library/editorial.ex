@@ -7,6 +7,8 @@ defmodule Library.Editorial do
   alias Library.Repo
 
   alias Library.Editorial.Publisher
+  alias Library.Editorial.Book
+
 
   @doc """
   Returns the list of publishers.
@@ -102,7 +104,9 @@ defmodule Library.Editorial do
     Publisher.changeset(publisher, attrs)
   end
 
-  alias Library.Editorial.Book
+  def list_books_from_publisher(id) do
+    Repo.all(from book in Book, where: book.publisher_id == ^id)
+  end
 
   @doc """
   Returns the list of books.
@@ -114,7 +118,7 @@ defmodule Library.Editorial do
 
   """
   def list_books do
-    Repo.all(Book)
+    Repo.all(Book) |> Repo.preload(:publisher)
   end
 
   @doc """
@@ -131,7 +135,7 @@ defmodule Library.Editorial do
       ** (Ecto.NoResultsError)
 
   """
-  def get_book!(id), do: Repo.get!(Book, id)
+  def get_book!(id), do: Repo.get!(Book, id) |> Repo.preload(:publisher)
 
   @doc """
   Creates a book.

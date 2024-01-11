@@ -10,4 +10,14 @@ defmodule LibraryWeb.BookHTML do
   attr :action, :string, required: true
 
   def book_form(assigns)
+
+  def publisher_opts(changeset) do
+    existing_ids =
+      changeset
+      |> Ecto.Changeset.get_change(:publisher_ids, [])
+      |> Enum.map(& &1.data.id)
+
+    for publisher <- Library.Editorial.list_publishers(),
+      do: [key: publisher.name, value: publisher.id, selected: publisher.id in existing_ids]
+  end
 end

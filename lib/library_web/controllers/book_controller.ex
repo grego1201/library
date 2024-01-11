@@ -22,6 +22,8 @@ defmodule LibraryWeb.BookController do
     else
       Map.delete(book_params, "photo")
     end
+
+    new_book_params = Map.update!(new_book_params, "publisher_id", fn publisher_id -> String.to_integer(publisher_id) end)
     case Editorial.create_book(new_book_params) do
       {:ok, book} ->
         conn
