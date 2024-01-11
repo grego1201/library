@@ -4,7 +4,7 @@ import Config
 config :library, Library.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
+  hostname: "0.0.0.0",
   database: "library_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
