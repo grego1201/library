@@ -21,6 +21,10 @@ defmodule Library.Books do
     Repo.all(Book) |> Repo.preload(:publisher)
   end
 
+  def order_books_by_title(books, order \\ :asc) do
+    Enum.sort_by(books, fn book -> book.title end, order)
+  end
+
   @doc """
   Gets a single book.
 
@@ -50,9 +54,12 @@ defmodule Library.Books do
 
   """
   def create_book(attrs \\ %{}) do
-    %Book{}
-    |> Book.changeset(attrs)
-    |> Repo.insert()
+    changeset = %Book{} |> Book.changeset(attrs)
+
+    case Repo.insert(changeset) do
+      {:ok, book} -> {:ok, book |> Repo.preload(:publisher)}
+      {:error, error} -> {:error, error}
+    end
   end
 
   @doc """
@@ -68,9 +75,13 @@ defmodule Library.Books do
 
   """
   def update_book(%Book{} = book, attrs) do
-    book
-    |> Book.changeset(attrs)
-    |> Repo.update()
+    changeset = book |> Book.changeset(attrs)
+
+
+    case Repo.update(changeset) do
+      {:ok, book} -> {:ok, book |> Repo.preload(:publisher)}
+      {:error, error} -> {:error, error}
+    end
   end
 
   @doc """
