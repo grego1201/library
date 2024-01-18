@@ -127,6 +127,10 @@ defmodule LibraryWeb.BooksLive do
           <.button phx-click="new">New Book </.button>
         </.link>
 
+        <.simple_form :let={f} for={%{}} phx-change="validate" phx-submit="save" >
+          <.input class="form-control me-2" id="book-search-field-0" type="search" placeholder="Search" aria-label="Search" name="search" value=""/>
+        </.simple_form>
+
         <.button phx-click={ @title_order[:phx_click] } >Sort title <%= to_string(@title_order[:order_by]) %></.button>
       </:actions>
     </.header>

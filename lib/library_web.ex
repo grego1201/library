@@ -17,7 +17,7 @@ defmodule LibraryWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt feed_data)
 
   def router do
     quote do
