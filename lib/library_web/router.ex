@@ -25,7 +25,6 @@ defmodule LibraryWeb.Router do
     resources "/books", BookController
 
     live "/books_live", BooksLive
-    live "/thermostat", ThermostatLive
   end
 
   # Other scopes may use custom stacks.
