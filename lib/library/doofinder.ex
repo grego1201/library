@@ -21,7 +21,7 @@ defmodule Library.Doofinder do
   end
 
   defp book_to_row(book) do
-    parsed_book = %{
+    %{
       brand: book.publisher.name,
       group_id: book.publisher.id,
       id: book.id,
