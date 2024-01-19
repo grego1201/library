@@ -61,6 +61,13 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :library, Oban,
+  peer: false,
+  repo: Library.Repo,
+  plugins: [Oban.Plugins.Pruner],
+  queues: [default: 10],
+  crontab: [{"32 14 * * *", Library.Workers.GenerateBooksFeed}]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

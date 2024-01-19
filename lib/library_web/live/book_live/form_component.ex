@@ -5,7 +5,7 @@ defmodule LibraryWeb.BookLive.FormComponent do
 
   @impl true
   def render(assigns) do
-    changeset = Books.change_book(assigns[:book])
+    assigns = assign(assigns, :changeset, Books.change_book(assigns[:book]))
     ~H"""
     <div>
       <.header>
@@ -24,7 +24,7 @@ defmodule LibraryWeb.BookLive.FormComponent do
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:isbn]} type="text" label="Isbn" />
         <.live_file_input upload={@uploads.photo} />
-        <.input field={@form[:publisher_id]} type="select" options={publisher_opts(changeset)} />
+        <.input field={@form[:publisher_id]} type="select" options={publisher_opts(@changeset)} />
 
         <:actions>
           <.button phx-disable-with="Saving...">Save Book</.button>

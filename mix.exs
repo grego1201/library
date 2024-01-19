@@ -52,7 +52,8 @@ defmodule Library.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
-      {:csv, "~> 3.2"}
+      {:csv, "~> 3.2"},
+      {:oban, "~> 2.16"}
     ]
   end
 
