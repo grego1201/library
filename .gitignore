@@ -37,3 +37,6 @@ npm-debug.log
 
 # Ignore cover images
 priv/static/images/cover_images/*
+
+# Ignore feed_data file
+priv/static/feed_data/*
