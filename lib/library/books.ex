@@ -21,8 +21,12 @@ defmodule Library.Books do
     Repo.all(Book) |> Repo.preload(:publisher)
   end
 
-  def order_books_by_title(books, order \\ :asc) do
-    Enum.sort_by(books, fn book -> book.title end, order)
+  def order_books_by_title(order)
+  def order_books_by_title(:asc) do
+    Repo.all(from(b in Book, order_by: [asc: :title], preload: :publisher))
+  end
+  def order_books_by_title(:desc) do
+    Repo.all(from(b in Book, order_by: [desc: :title], preload: :publisher))
   end
 
   @doc """

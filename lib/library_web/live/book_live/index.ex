@@ -51,14 +51,14 @@ defmodule LibraryWeb.BookLive.Index do
   def handle_event("sort_by_title_asc", _params, socket) do
     {:noreply,
       socket
-      |> stream_insert(:books, &Books.order_books_by_title(&1, :asc))
+      |> stream(:books, Books.order_books_by_title(:asc), reset: true)
       |> assign(:title_order, %{phx_click: "sort_by_title_desc", order_by: :desc})
     }
   end
 
   def handle_event("sort_by_title_desc", _params, socket) do
     {:noreply, socket
-      |> stream_insert(:books, &Books.order_books_by_title(&1, :desc))
+      |> stream(:books, Books.order_books_by_title(:desc), reset: true)
       |> assign(:title_order, %{phx_click: "sort_by_title_asc", order_by: :asc})
     }
   end
