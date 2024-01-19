@@ -26,7 +26,7 @@ defmodule Library.Doofinder do
       group_id: book.publisher.id,
       id: book.id,
       cover_image_link: book.cover_image_path,
-      link: "https://foo.com",
+      link: "localhost:4000/books/#{book.id}",
       title: book.title,
     }
   end
